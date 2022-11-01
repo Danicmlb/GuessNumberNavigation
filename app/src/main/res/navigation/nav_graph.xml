@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentConfig">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.guessnumbernavigation.iu.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/fragmentConfig"
+        android:name="com.example.guessnumbernavigation.iu.FragmentConfig"
+        android:label="@string/tvTituloText"
+        tools:layout="@layout/fragment_config" >
+        <action
+            android:id="@+id/action_fragmentConfig_to_fragmentPlay"
+            app:destination="@id/fragmentPlay" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPlay"
+        android:name="com.example.guessnumbernavigation.iu.FragmentPlay"
+        android:label="@string/tvTituloText"
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/action_fragmentPlay_to_fragmentEndPlay"
+            app:destination="@id/fragmentEndPlay" />
+        <argument
+            android:name="GuessNumber"
+            app:argType="com.example.guessnumbernavigation.data.GuessNumber" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEndPlay"
+        android:name="com.example.guessnumbernavigation.iu.FragmentEndPlay"
+        android:label="@string/tvTituloText"
+        tools:layout="@layout/fragment_endplay" >
+        <action
+            android:id="@+id/action_fragmentEndPlay_to_fragmentConfig"
+            app:destination="@id/fragmentConfig"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="GuessNumber"
+            app:argType="com.example.guessnumbernavigation.data.GuessNumber" />
+    </fragment>
+</navigation>
